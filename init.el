@@ -53,7 +53,14 @@
 (let ((default-directory "~/.emacs.d/lisp/"))
  (normal-top-level-add-subdirs-to-load-path))
 
-;; ADDED AUTOMATICALLY
+
+(when (eq system-type 'darwin) ;; mac specific settings
+  (setq mac-option-modifier nil)
+  (setq mac-command-modifier 'meta)
+  (global-set-key [kp-delete] 'delete-char) ;; sets fn-delete to be right-delete
+  )
+
+;; Added Automatically
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
