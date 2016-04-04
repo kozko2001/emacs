@@ -10,7 +10,7 @@
   (package-refresh-contents))
 
 ;; define the packages that we need to install
-(defvar my-packages '(evil company org magit helm powerline-evil docker))
+(defvar my-packages '(evil company org magit helm powerline-evil docker projectile))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
@@ -43,6 +43,9 @@
 (require 'evil)
 (evil-mode 1)
 
+;; Magit
+(global-set-key (kbd "C-x g") 'magit-status)
+
 ;; Loads the theme
 (load-theme 'wombat)
 
@@ -52,7 +55,12 @@
 ;; All lisp code that must be loaded at init of emacs, a bit of organizatin
 (let ((default-directory "~/.emacs.d/lisp/"))
  (normal-top-level-add-subdirs-to-load-path))
+(add-to-list 'load-path "~/.emacs.d/lisp/")
 
+
+(load "evil_custom.el")
+(load "docker_custom.el")
+(load "org_custom.el")
 
 (when (eq system-type 'darwin) ;; mac specific settings
   (setq mac-option-modifier nil)
@@ -68,7 +76,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (docker 0blayout py-autopep8 python-mode docker-tramp powerline-evil helm magit org evil company))))
+    (helm-projectile org-projectile projectile docker 0blayout py-autopep8 python-mode docker-tramp powerline-evil helm magit org evil company))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
