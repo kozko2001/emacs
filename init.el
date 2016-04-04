@@ -10,7 +10,7 @@
   (package-refresh-contents))
 
 ;; define the packages that we need to install
-(defvar my-packages '(evil company org magit helm powerline-evil docker projectile))
+(defvar my-packages '(evil company org magit helm powerline-evil docker projectile markdown-mode))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
@@ -61,10 +61,11 @@
 (load "evil_custom.el")
 (load "docker_custom.el")
 (load "org_custom.el")
+(load "blogit-for-ghost.el")
 
 
 (when (eq system-type 'darwin) ;; mac specific settings
-  (setq mac-option-modifier nil)
+  (setq mac-option-modifier 'super)
   (setq mac-command-modifier 'meta)
   (global-set-key [kp-delete] 'delete-char) ;; sets fn-delete to be right-delete
   )
