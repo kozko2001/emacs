@@ -46,6 +46,9 @@
 ;; Magit
 (global-set-key (kbd "C-x g") 'magit-status)
 
+;; Bookmarks
+(global-set-key (kbd "C-x l") 'helm-bookmarks)
+
 ;; Loads the theme
 (load-theme 'wombat)
 
@@ -65,7 +68,7 @@
 
 
 (when (eq system-type 'darwin) ;; mac specific settings
-  (setq mac-option-modifier 'super)
+  (setq mac-option-modifier nil)
   (setq mac-command-modifier 'meta)
   (global-set-key [kp-delete] 'delete-char) ;; sets fn-delete to be right-delete
   )
@@ -78,7 +81,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (helm-projectile org-projectile projectile docker 0blayout py-autopep8 python-mode docker-tramp powerline-evil helm magit org evil company))))
+    (org-ehtml helm-projectile org-projectile projectile docker 0blayout py-autopep8 python-mode docker-tramp powerline-evil helm magit org evil company))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
