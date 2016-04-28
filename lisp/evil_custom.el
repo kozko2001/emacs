@@ -71,3 +71,11 @@
 (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
 (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
 (global-set-key [escape] 'evil-exit-emacs-state)
+
+;;;; Evil leader
+
+(evil-leader/set-key
+  "g" 'magit-status
+  "p" 'helm-projectile-find-file
+  "u" 'undo-tree-visualize
+  "j" 'avy-goto-char-timer)
