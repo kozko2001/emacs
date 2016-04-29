@@ -6,8 +6,8 @@
              '("melpa" . "http://melpa.org/packages/") t)
 (package-initialize)
 
-(when (not package-archive-contents)
-  (package-refresh-contents))
+;(when (not package-archive-contents)
+;  (package-refresh-contents))
 
 ;; define the packages that we need to install
 (defvar my-packages
@@ -31,7 +31,11 @@
     org-bullets
     undo-tree
     avy
-    expand-region))
+    expand-region
+    bbdb				; big brother database, to get all the mails in my gnus
+    which-key
+    evil-god-state
+    ))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
@@ -54,12 +58,11 @@
 (column-number-mode 1) ; display column/row of cursor in mode-line
 (show-paren-mode 1)
 (global-auto-revert-mode 1)
-(setq pop-up-windows nil)          ;; No popup windows
 
 ;; Scrolling
 (require 'smooth-scrolling)
 (smooth-scrolling-mode 1)
-(global-set-key (kbd "M-<u>") 'scroll-down)
+(global-set-key (kbd "M-<up>") 'scroll-down)
 (global-set-key (kbd "M-<down>") 'scroll-up)
 
 ;; Undo tree
@@ -101,6 +104,21 @@
 ;; ace window
 (global-set-key (kbd "M-p") 'ace-window)
 
+;; which-key
+(require 'which-key)
+(which-key-mode)
+
+;; evil god state - Enter in god mode with ç and exit with ç in evil normal mode
+(evil-define-key 'normal global-map "ç" 'evil-execute-in-god-state)
+(evil-define-key 'god global-map [escape] 'evil-god-state-bail)
+(global-set-key (kbd "C-ç") 'evil-god-state-bail)
+
+;; recentf
+(recentf-mode 1)
+(setq recentf-max-saved-items 50)
+(init-open-recentf)
+
+
 ;; Loads the theme
 (load-theme 'wombat)
 
@@ -110,9 +128,31 @@
 (setq avy-timeout-seconds 3)
 (setq avy-background t)
 
+;; GNUS
+(require 'gnus)
+(setq nnml-directory "~/gmail")
+(setq message-directory "~/gmail")
+;; (require 'bbdb)
+;; (require 'bbdb-autoloads)
+;; (setq bbdb-file "~/.bbdb"
+;;       bbdb-offer-save 'auto
+;;       bbdb-notice-auto-save-file t
+;;       bbdb-expand-mail-aliases t
+;;       bbdb-canonicalize-redundant-nets-p t
+;;       bbdb-always-add-addresses t
+;;       bbdb-complete-name-allow-cycling t
+;;       )
+;; (add-hook 'message-mode-hook
+;;           '(lambda ()
+;;              (bbdb-initialize 'message)
+;;              (bbdb-initialize 'gnus)
+;;              (local-set-key "<TAB>" 'bbdb-complete-name)))
+
+
 ;; expand region
 (require 'expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region)
+(global-set-key (kbd "C-e") 'er/expand-region)
 
 ;; tags?
 ;; (require 'jtags)
@@ -123,7 +163,8 @@
 ;; Android
 ;; (require 'android-mode)
 ;; (add-hook 'java-mode-hook 'android-mode)
-
+(require 'gradle-mode)
+(add-hook 'java-mode-hook 'gradle-mode)
 
 ;; JS2 + JSX
 (defun modify-syntax-table-for-jsx ()
@@ -147,14 +188,17 @@
 (require 'linum)
 (require 'hlinum)
 (setq linum-format " %3d ")
-;; (set-frame-font "Source Code Pro Light 14")
-;; (add-to-list 'default-frame-alist
-;;              '(font . "Source Code Pro Light 14"))
+(set-frame-font "Source Code Pro Light 14")
+(add-to-list 'default-frame-alist
+             '(font . "Source Code Pro Light 14"))
+
+
 
 (load "evil_custom.el")
 (load "docker_custom.el")
 (load "org_custom.el")
 (load "blogit-for-ghost.el")
+(load "logcat-kzk.el")
 ; (load "android.el")
 
 (when (eq system-type 'darwin) ;; mac specific settings
@@ -180,7 +224,10 @@
  '(js-indent-level 2)
  '(package-selected-packages
    (quote
-    (jtags ac-etags malabar-mode org-bullets expand-region elogcat android-mode xkcd popup popup-complete popup-kill-ring popup-switcher smooth-scrolling evil-leader evil-magit evil-multiedit evil-surround org-download ace-window zenburn-theme hlinum ranger dired-ranger tern-auto-complete company-tern coffee-mode ggtags js3-mode flycheck-pos-tip flycheck-status-emoji jira jira-markup-mode flycheck yasnippet mocha ac-js2 js2-mode helm-projectile org-projectile projectile docker 0blayout py-autopep8 python-mode docker-tramp powerline-evil helm magit org evil company))))
+    (init-open-recentf evil-god-state which-key gradle-mode bbdb jtags ac-etags malabar-mode org-bullets expand-region android-mode xkcd popup popup-complete popup-kill-ring popup-switcher smooth-scrolling evil-leader evil-magit evil-multiedit evil-surround org-download ace-window zenburn-theme hlinum ranger dired-ranger tern-auto-complete company-tern coffee-mode ggtags js3-mode flycheck-pos-tip flycheck-status-emoji jira jira-markup-mode flycheck yasnippet mocha ac-js2 js2-mode helm-projectile org-projectile projectile docker 0blayout py-autopep8 python-mode docker-tramp powerline-evil helm magit org evil company)))
+ '(send-mail-function (quote smtpmail-send-it))
+ '(smtpmail-smtp-server "smtp.gmail.com")
+ '(smtpmail-smtp-service 25))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
