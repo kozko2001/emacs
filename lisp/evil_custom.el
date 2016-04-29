@@ -72,6 +72,13 @@
 (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
 (global-set-key [escape] 'evil-exit-emacs-state)
 
+(defun kzk/eval-region-buffer ()
+  "Evaluate the region or all the buffer depending if there is a region available."
+    (interactive)
+    (if (use-region-p)
+	(eval-region (region-beginning) (region-end))
+      (eval-buffer)))
+
 (window-leader/set-key
   "ç" 'evil-god-state-bail
   "m" 'compose-mail
@@ -80,7 +87,7 @@
   "p" 'helm-projectile-find-file
   "u" 'undo-tree-visualize
   "c" 'delete-other-windows
-  "e" 'eval-region
+  "e" 'kzk/eval-region-buffer
   "b" 'helm-bookmarks
   "<up>" 'windmove-up
   "<down>" 'windmove-down
