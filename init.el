@@ -39,6 +39,8 @@
     evil-god-state
     init-open-recentf
     gradle-mode
+    rainbow-delimiters
+    reveal-in-osx-finder
     ))
 
 (dolist (p my-packages)
@@ -196,6 +198,8 @@
 (add-to-list 'default-frame-alist
              '(font . "Source Code Pro Light 14"))
 
+(require 'rainbow-delimiters)
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 
 (load "evil_custom.el")
@@ -228,7 +232,7 @@
  '(js-indent-level 2)
  '(package-selected-packages
    (quote
-    (init-open-recentf evil-god-state which-key gradle-mode bbdb jtags ac-etags malabar-mode org-bullets expand-region android-mode xkcd popup popup-complete popup-kill-ring popup-switcher smooth-scrolling evil-leader evil-magit evil-multiedit evil-surround org-download ace-window zenburn-theme hlinum ranger dired-ranger tern-auto-complete company-tern coffee-mode ggtags js3-mode flycheck-pos-tip flycheck-status-emoji jira jira-markup-mode flycheck yasnippet mocha ac-js2 js2-mode helm-projectile org-projectile projectile docker 0blayout py-autopep8 python-mode docker-tramp powerline-evil helm magit org evil company)))
+    (reveal-in-osx-finder rainbow-delimiters init-open-recentf evil-god-state which-key gradle-mode bbdb jtags ac-etags malabar-mode org-bullets expand-region android-mode xkcd popup popup-complete popup-kill-ring popup-switcher smooth-scrolling evil-leader evil-magit evil-multiedit evil-surround org-download ace-window zenburn-theme hlinum ranger dired-ranger tern-auto-complete company-tern coffee-mode ggtags js3-mode flycheck-pos-tip flycheck-status-emoji jira jira-markup-mode flycheck yasnippet mocha ac-js2 js2-mode helm-projectile org-projectile projectile docker 0blayout py-autopep8 python-mode docker-tramp powerline-evil helm magit org evil company)))
  '(send-mail-function (quote smtpmail-send-it))
  '(smtpmail-smtp-server "smtp.gmail.com")
  '(smtpmail-smtp-service 25))
@@ -237,4 +241,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(rainbow-delimiters-depth-1-face ((t (:foreground "gray100"))))
+ '(rainbow-delimiters-depth-2-face ((t (:foreground "yellow1"))))
+ '(rainbow-delimiters-depth-3-face ((t (:foreground "burlywood1"))))
+ '(rainbow-delimiters-depth-4-face ((t (:foreground "sea green")))))
