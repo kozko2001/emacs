@@ -202,7 +202,8 @@
               (goto-char (point-max))
               (when (and (elogcat-include-string-p line)
                          (not (elogcat-exclude-string-p line))
-			 ;(string-equal level "I") // HERE THE FILTER of PID!!
+			 (string-equal level "E") ;;// HERE THE FILTER of PID!!
+			 ;(= (random 100) 1)
 			 )
                 (if (string-match-p "^\\([0-9][0-9]\\)-\\([0-9][0-9]\\)" line)
                     (let ((level-face (cdr (or (assoc level elogcat-face-alist)
@@ -278,12 +279,13 @@
 
 (defun elogcat-command-line ()
   "Adb command line to be executed."
-  (concat "adb shell "
-	  (shell-quote-argument
-	   (concat elogcat-logcat-command
-		   (when elogcat-enable-klog
-		     (concat
-		      " & " elogcat-klog-command)))))
+  "adb logcat"
+  ;; (concat "adb shell "
+  ;; 	  (shell-quote-argument
+  ;; 	   (concat elogcat-logcat-command
+  ;; 		   (when elogcat-enable-klog
+  ;; 		     (concat
+  ;; 		      " & " elogcat-klog-command)))))
   )
 ;;;###autoload
 (defun elogcat ()

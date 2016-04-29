@@ -50,18 +50,18 @@
   (setq evil-insert-state-cursor '("red" bar))
   (setq evil-replace-state-cursor '("red" bar))
   (setq evil-operator-state-cursor '("red" hollow))
-)
+  )
 
-; Bind escape to quit minibuffers
+					; Bind escape to quit minibuffers
 (defun minibuffer-keyboard-quit ()
-    "Abort recursive edit.
+  "Abort recursive edit.
   In Delete Selection mode, if the mark is active, just deactivate it;
   then it takes a second \\[keyboard-quit] to abort the minibuffer."
-    (interactive)
-    (if (and delete-selection-mode transient-mark-mode mark-active)
-    (setq deactivate-mark  t)
-      (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
-      (abort-recursive-edit)))
+  (interactive)
+  (if (and delete-selection-mode transient-mark-mode mark-active)
+      (setq deactivate-mark  t)
+    (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
+    (abort-recursive-edit)))
 
 (define-key evil-normal-state-map [escape] 'keyboard-quit)
 (define-key evil-visual-state-map [escape] 'keyboard-quit)
@@ -74,13 +74,14 @@
 
 (defun kzk/eval-region-buffer ()
   "Evaluate the region or all the buffer depending if there is a region available."
-    (interactive)
-    (if (use-region-p)
-	(eval-region (region-beginning) (region-end))
-      (eval-buffer)))
+  (interactive)
+  (if (use-region-p)
+      (eval-region (region-beginning) (region-end))
+    (eval-buffer)))
 
 (evil-leader/set-key
   "ç" 'evil-god-state-bail
+  "b" 'helm-bookmarks
   "m" 'compose-mail
   "r" 'helm-recentf
   "y" 'helm-show-kill-ring
@@ -94,4 +95,5 @@
   "<down>" 'windmove-down
   "<left>" 'windmove-left
   "<right>" 'windmove-right
+  "1" 'reveal-in-osx-finder
   "j" 'avy-goto-char-timer)
