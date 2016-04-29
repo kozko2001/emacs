@@ -16,6 +16,7 @@
     org
     magit
     helm
+    helm-descbinds
     powerline-evil
     docker
     projectile
@@ -71,10 +72,15 @@
 
 ;; helm
 (require 'helm)
+(require 'helm-descbinds)
+(require 'helm-describe-modes)
 (global-set-key (kbd "M-x")                          'undefined)
 (global-set-key (kbd "M-x")                          'helm-M-x)
 (global-set-key (kbd "C-x r b")                      'helm-filtered-bookmarks)
 (global-set-key (kbd "C-x C-f")                      'helm-find-files)
+(global-set-key (kbd "C-h b")                        'helm-descbinds)
+(global-set-key (kbd "C-h m")                        'helm-describe-modes)
+
 (setq helm-projectile-fuzzy-match t)
 (setq helm-M-x-fuzzy-match t)
 (helm-mode 1)
@@ -224,7 +230,7 @@
  '(js-indent-level 2)
  '(package-selected-packages
    (quote
-    (init-open-recentf evil-god-state which-key gradle-mode bbdb jtags ac-etags malabar-mode org-bullets expand-region android-mode xkcd popup popup-complete popup-kill-ring popup-switcher smooth-scrolling evil-leader evil-magit evil-multiedit evil-surround org-download ace-window zenburn-theme hlinum ranger dired-ranger tern-auto-complete company-tern coffee-mode ggtags js3-mode flycheck-pos-tip flycheck-status-emoji jira jira-markup-mode flycheck yasnippet mocha ac-js2 js2-mode helm-projectile org-projectile projectile docker 0blayout py-autopep8 python-mode docker-tramp powerline-evil helm magit org evil company)))
+    (helm-descbinds helm-describe-modes init-open-recentf evil-god-state which-key gradle-mode bbdb jtags ac-etags malabar-mode org-bullets expand-region android-mode xkcd popup popup-complete popup-kill-ring popup-switcher smooth-scrolling evil-leader evil-magit evil-multiedit evil-surround org-download ace-window zenburn-theme hlinum ranger dired-ranger tern-auto-complete company-tern coffee-mode ggtags js3-mode flycheck-pos-tip flycheck-status-emoji jira jira-markup-mode flycheck yasnippet mocha ac-js2 js2-mode helm-projectile org-projectile projectile docker 0blayout py-autopep8 python-mode docker-tramp powerline-evil helm magit org evil company)))
  '(send-mail-function (quote smtpmail-send-it))
  '(smtpmail-smtp-server "smtp.gmail.com")
  '(smtpmail-smtp-service 25))

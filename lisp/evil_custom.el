@@ -79,10 +79,11 @@
 	(eval-region (region-beginning) (region-end))
       (eval-buffer)))
 
-(window-leader/set-key
+(evil-leader/set-key
   "ç" 'evil-god-state-bail
   "m" 'compose-mail
   "r" 'helm-recentf
+  "y" 'helm-show-kill-ring
   "g" 'magit-status
   "p" 'helm-projectile-find-file
   "u" 'undo-tree-visualize
