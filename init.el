@@ -42,6 +42,8 @@
     gradle-mode
     rainbow-delimiters
     reveal-in-osx-finder
+    hydra
+    helm-describe-modes
     ))
 
 (dolist (p my-packages)
@@ -112,6 +114,20 @@
 
 ;; FlyCheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
+(defhydra hydra-flycheck
+  (:pre (progn (setq hydra-lv t) (flycheck-list-errors))
+   :post (progn (setq hydra-lv nil) (quit-windows-on "*Flycheck errors*"))
+   :hint nil)
+  "Errors"
+  ("f"  flycheck-error-list-set-filter                            "Filter")
+  ("j"  flycheck-next-error                                       "Next")
+  ("k"  flycheck-previous-error                                   "Previous")
+  ("gg" flycheck-first-error                                      "First")
+  ("G"  (progn (goto-char (point-max)) (flycheck-previous-error)) "Last")
+  ("q"  nil))
+
+(evil-leader/set-key
+  "!" 'hydra-flycheck/body)
 
 ;; ace window
 (global-set-key (kbd "M-p") 'ace-window)
@@ -239,7 +255,7 @@
  '(js-indent-level 2)
  '(package-selected-packages
    (quote
-    (helm-descbinds helm-describe-modes reveal-in-osx-finder rainbow-delimiters init-open-recentf evil-god-state which-key gradle-mode bbdb jtags ac-etags malabar-mode org-bullets expand-region android-mode xkcd popup popup-complete popup-kill-ring popup-switcher smooth-scrolling evil-leader evil-magit evil-multiedit evil-surround org-download ace-window zenburn-theme hlinum ranger dired-ranger tern-auto-complete company-tern coffee-mode ggtags js3-mode flycheck-pos-tip flycheck-status-emoji jira jira-markup-mode flycheck yasnippet mocha ac-js2 js2-mode helm-projectile org-projectile projectile docker 0blayout py-autopep8 python-mode docker-tramp powerline-evil helm magit org evil company)))
+    (jabber hydra reveal-in-osx-finder rainbow-delimiters init-open-recentf evil-god-state which-key gradle-mode bbdb jtags ac-etags malabar-mode org-bullets expand-region android-mode xkcd popup popup-complete popup-kill-ring popup-switcher smooth-scrolling evil-leader evil-magit evil-multiedit evil-surround org-download ace-window zenburn-theme hlinum ranger dired-ranger tern-auto-complete company-tern coffee-mode ggtags js3-mode flycheck-pos-tip flycheck-status-emoji jira jira-markup-mode flycheck yasnippet mocha ac-js2 js2-mode helm-projectile org-projectile projectile docker 0blayout py-autopep8 python-mode docker-tramp powerline-evil helm magit org evil company)))
  '(send-mail-function (quote smtpmail-send-it))
  '(smtpmail-smtp-server "smtp.gmail.com")
  '(smtpmail-smtp-service 25))
