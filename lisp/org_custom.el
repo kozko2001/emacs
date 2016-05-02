@@ -104,11 +104,6 @@ _h_tml    ^ ^         ^ ^             _A_SCII:
 
 ;; I bind it for myself like this:
 
-(define-key org-mode-map "<"
-  (lambda () (interactive)
-     (if (looking-back "^")
-         (hydra-org-template/body)
-       (self-insert-command 1))))
 (defun hot-expand (str)
   "Expand org template."
   (let (text)
@@ -119,13 +114,6 @@ _h_tml    ^ ^         ^ ^             _A_SCII:
     (insert str)
     (org-try-structure-completion)
     (when text (insert text))))
-
-
-(define-key org-mode-map "<"
-  (lambda () (interactive)
-    (if (or (region-active-p) (looking-back "^"))
-        (hydra-org-template/body)
-      (self-insert-command 1))))
 
 (evil-leader/set-key-for-mode 'org-mode "c" 'hydra-org-clock/body)
 (evil-leader/set-key-for-mode 'org-mode "<" 'hydra-org-template/body)

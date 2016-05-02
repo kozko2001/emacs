@@ -44,6 +44,8 @@
     reveal-in-osx-finder
     hydra
     helm-describe-modes
+    jabber
+    request
     ))
 
 (dolist (p my-packages)
@@ -230,6 +232,7 @@
 (load "org_custom.el")
 (load "blogit-for-ghost.el")
 (load "logcat-kzk.el")
+(load "hipchat.el")
 ; (load "android.el")
 
 (when (eq system-type 'darwin) ;; mac specific settings
@@ -252,10 +255,12 @@
     ("c4465c56ee0cac519dd6ab6249c7fd5bb2c7f7f78ba2875d28a50d3c20a59473" default)))
  '(flycheck-javascript-eslint-executable "/usr/local/bin/eslint")
  '(flycheck-pos-tip-timeout 1)
+ '(hipchat-nickname "Jordi Coscolla")
+ '(jabber-account-list (quote (("274357_1747663@chat.hipchat.com"))))
  '(js-indent-level 2)
  '(package-selected-packages
    (quote
-    (jabber hydra reveal-in-osx-finder rainbow-delimiters init-open-recentf evil-god-state which-key gradle-mode bbdb jtags ac-etags malabar-mode org-bullets expand-region android-mode xkcd popup popup-complete popup-kill-ring popup-switcher smooth-scrolling evil-leader evil-magit evil-multiedit evil-surround org-download ace-window zenburn-theme hlinum ranger dired-ranger tern-auto-complete company-tern coffee-mode ggtags js3-mode flycheck-pos-tip flycheck-status-emoji jira jira-markup-mode flycheck yasnippet mocha ac-js2 js2-mode helm-projectile org-projectile projectile docker 0blayout py-autopep8 python-mode docker-tramp powerline-evil helm magit org evil company)))
+    (request jabber hydra reveal-in-osx-finder rainbow-delimiters init-open-recentf evil-god-state which-key gradle-mode bbdb jtags ac-etags malabar-mode org-bullets expand-region android-mode xkcd popup popup-complete popup-kill-ring popup-switcher smooth-scrolling evil-leader evil-magit evil-multiedit evil-surround org-download ace-window zenburn-theme hlinum ranger dired-ranger tern-auto-complete company-tern coffee-mode ggtags js3-mode flycheck-pos-tip flycheck-status-emoji jira jira-markup-mode flycheck yasnippet mocha ac-js2 js2-mode helm-projectile org-projectile projectile docker 0blayout py-autopep8 python-mode docker-tramp powerline-evil helm magit org evil company)))
  '(send-mail-function (quote smtpmail-send-it))
  '(smtpmail-smtp-server "smtp.gmail.com")
  '(smtpmail-smtp-service 25))
