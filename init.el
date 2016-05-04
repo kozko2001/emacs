@@ -46,6 +46,7 @@
     helm-describe-modes
     jabber
     request
+    diminish
     ))
 
 (dolist (p my-packages)
@@ -226,6 +227,15 @@
 (require 'rainbow-delimiters)
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
+(require 'diminish)
+(diminish 'projectile-mode "")
+(diminish 'flycheck-mode "")
+(diminish 'undo-tree-mode "")
+(diminish 'helm-mode "")
+(diminish 'lisp-interaction-mode "")
+(diminish 'which-key-mode "")
+(diminish 'yas-minor-mode "")
+
 
 (load "evil_custom.el")
 (load "docker_custom.el")
@@ -257,10 +267,12 @@
  '(flycheck-pos-tip-timeout 1)
  '(hipchat-nickname "Jordi Coscolla")
  '(jabber-account-list (quote (("274357_1747663@chat.hipchat.com"))))
+ '(jabber-activity-count-in-title t)
+ '(jabber-auto-reconnect t)
  '(js-indent-level 2)
  '(package-selected-packages
    (quote
-    (request jabber hydra reveal-in-osx-finder rainbow-delimiters init-open-recentf evil-god-state which-key gradle-mode bbdb jtags ac-etags malabar-mode org-bullets expand-region android-mode xkcd popup popup-complete popup-kill-ring popup-switcher smooth-scrolling evil-leader evil-magit evil-multiedit evil-surround org-download ace-window zenburn-theme hlinum ranger dired-ranger tern-auto-complete company-tern coffee-mode ggtags js3-mode flycheck-pos-tip flycheck-status-emoji jira jira-markup-mode flycheck yasnippet mocha ac-js2 js2-mode helm-projectile org-projectile projectile docker 0blayout py-autopep8 python-mode docker-tramp powerline-evil helm magit org evil company)))
+    (diminish request jabber hydra reveal-in-osx-finder rainbow-delimiters init-open-recentf evil-god-state which-key gradle-mode bbdb jtags ac-etags malabar-mode org-bullets expand-region android-mode xkcd popup popup-complete popup-kill-ring popup-switcher smooth-scrolling evil-leader evil-magit evil-multiedit evil-surround org-download ace-window zenburn-theme hlinum ranger dired-ranger tern-auto-complete company-tern coffee-mode ggtags js3-mode flycheck-pos-tip flycheck-status-emoji jira jira-markup-mode flycheck yasnippet mocha ac-js2 js2-mode helm-projectile org-projectile projectile docker 0blayout py-autopep8 python-mode docker-tramp powerline-evil helm magit org evil company)))
  '(send-mail-function (quote smtpmail-send-it))
  '(smtpmail-smtp-server "smtp.gmail.com")
  '(smtpmail-smtp-service 25))
@@ -269,6 +281,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(jabber-activity-face ((t (:foreground "salmon1" :weight bold))))
  '(rainbow-delimiters-depth-1-face ((t (:foreground "gray100"))))
  '(rainbow-delimiters-depth-2-face ((t (:foreground "yellow1"))))
  '(rainbow-delimiters-depth-3-face ((t (:foreground "burlywood1"))))
