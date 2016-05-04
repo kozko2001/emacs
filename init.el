@@ -80,6 +80,8 @@
 ;; Undo tree
 (require 'undo-tree)
 (global-undo-tree-mode)
+(setq undo-tree-visualizer-timestamps t)
+(setq undo-tree-visualizer-diff t)
 
 ;; helm
 (require 'helm)
@@ -159,26 +161,6 @@
 (setq avy-highlight-first t)
 (setq avy-timeout-seconds 3)
 (setq avy-background t)
-
-;; GNUS
-(require 'gnus)
-(setq nnml-directory "~/gmail")
-(setq message-directory "~/gmail")
-;; (require 'bbdb)
-;; (require 'bbdb-autoloads)
-;; (setq bbdb-file "~/.bbdb"
-;;       bbdb-offer-save 'auto
-;;       bbdb-notice-auto-save-file t
-;;       bbdb-expand-mail-aliases t
-;;       bbdb-canonicalize-redundant-nets-p t
-;;       bbdb-always-add-addresses t
-;;       bbdb-complete-name-allow-cycling t
-;;       )
-;; (add-hook 'message-mode-hook
-;;           '(lambda ()
-;;              (bbdb-initialize 'message)
-;;              (bbdb-initialize 'gnus)
-;;              (local-set-key "<TAB>" 'bbdb-complete-name)))
 
 
 ;; expand region
@@ -272,7 +254,7 @@
  '(js-indent-level 2)
  '(package-selected-packages
    (quote
-    (diminish request jabber hydra reveal-in-osx-finder rainbow-delimiters init-open-recentf evil-god-state which-key gradle-mode bbdb jtags ac-etags malabar-mode org-bullets expand-region android-mode xkcd popup popup-complete popup-kill-ring popup-switcher smooth-scrolling evil-leader evil-magit evil-multiedit evil-surround org-download ace-window zenburn-theme hlinum ranger dired-ranger tern-auto-complete company-tern coffee-mode ggtags js3-mode flycheck-pos-tip flycheck-status-emoji jira jira-markup-mode flycheck yasnippet mocha ac-js2 js2-mode helm-projectile org-projectile projectile docker 0blayout py-autopep8 python-mode docker-tramp powerline-evil helm magit org evil company)))
+    (diminish request jabber heml-descbinds helm-describe-modes w3m hydra reveal-in-osx-finder rainbow-delimiters init-open-recentf evil-god-state which-key gradle-mode bbdb jtags ac-etags malabar-mode org-bullets expand-region android-mode xkcd popup popup-complete popup-kill-ring popup-switcher smooth-scrolling evil-leader evil-magit evil-multiedit evil-surround org-download ace-window zenburn-theme hlinum ranger dired-ranger tern-auto-complete company-tern coffee-mode ggtags js3-mode flycheck-pos-tip flycheck-status-emoji jira jira-markup-mode flycheck yasnippet mocha ac-js2 js2-mode helm-projectile org-projectile projectile docker 0blayout py-autopep8 python-mode docker-tramp powerline-evil helm magit org evil company)))
  '(send-mail-function (quote smtpmail-send-it))
  '(smtpmail-smtp-server "smtp.gmail.com")
  '(smtpmail-smtp-service 25))

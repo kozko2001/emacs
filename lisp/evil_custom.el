@@ -92,6 +92,7 @@
   "h" 'jabber-activity-switch-to
   "e" 'kzk/eval-region-buffer
   "b" 'helm-bookmarks
+  "o" 'helm-occur
   "<up>" 'windmove-up
   "<down>" 'windmove-down
   "<left>" 'windmove-left

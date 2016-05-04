@@ -35,6 +35,10 @@
 (require 'org-bullets)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
+;; ORG BABEL
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((python . t)))
 
 (require 'hydra)
 (defhydra hydra-org-clock (:color blue :hint nil)
