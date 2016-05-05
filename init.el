@@ -275,12 +275,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
-<<<<<<< HEAD
  '(powerline-active1 ((t (:inherit mode-line :background "dark blue"))))
  '(powerline-active2 ((t (:inherit mode-line :background "dark cyan"))))
-=======
  '(jabber-activity-face ((t (:foreground "salmon1" :weight bold))))
->>>>>>> 4ac75e057a66695cc0e14a3b1a9016057abcc45e
  '(rainbow-delimiters-depth-1-face ((t (:foreground "gray100"))))
  '(rainbow-delimiters-depth-2-face ((t (:foreground "yellow1"))))
  '(rainbow-delimiters-depth-3-face ((t (:foreground "burlywood1"))))
