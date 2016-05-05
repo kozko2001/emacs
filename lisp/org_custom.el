@@ -35,6 +35,16 @@
 (require 'org-bullets)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
+;; ORG - Capture
+(setq org-directory "~/Dropbox/org-mode/")
+(setq org-default-notes-file (concat org-directory "/notes.org"))
+ (setq org-capture-templates
+      '(("t" "Todo" entry (file+headline "~/org/notes.org" "Tasks")
+             "* TODO %?\n  %i\n  %a")
+        ("j" "Journal" entry (file+datetree "~/org/notes.org")
+             "* %?\nEntered on %U\n  %i\n  %a")))
+
+
 ;; ORG BABEL
 (org-babel-do-load-languages
  'org-babel-load-languages
@@ -121,3 +131,4 @@ _h_tml    ^ ^         ^ ^             _A_SCII:
 
 (evil-leader/set-key-for-mode 'org-mode "c" 'hydra-org-clock/body)
 (evil-leader/set-key-for-mode 'org-mode "<" 'hydra-org-template/body)
+(evil-leader/set-key  "n" 'org-capture)
