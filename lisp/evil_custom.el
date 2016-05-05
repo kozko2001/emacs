@@ -89,6 +89,7 @@
   "p" 'helm-projectile-find-file
   "u" 'undo-tree-visualize
   "c" 'delete-other-windows
+  "h" 'jabber-activity-switch-to
   "e" 'kzk/eval-region-buffer
   "b" 'helm-bookmarks
   "o" 'helm-occur
